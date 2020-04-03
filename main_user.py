@@ -5,7 +5,7 @@ import re
 
 def password_generator():
     email = input("Please enter your email: ")
-    while not re.match("[^@]+@[^@]+\.[^@]+", email):
+    while not re.match("^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", email):
         email = input('please enter a valid email address: ')
     first = input("Please enter your first name: ")
     last = input('Please enter your last name: ')
