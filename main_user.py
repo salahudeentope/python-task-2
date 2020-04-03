@@ -1,9 +1,12 @@
 import random
 import string
+import re
 
 
 def password_generator():
     email = input("Please enter your email: ")
+    while not re.match("[^@]+@[^@]+\.[^@]+", email):
+        email = input('please enter a valid email address: ')
     first = input("Please enter your first name: ")
     last = input('Please enter your last name: ')
 
@@ -19,12 +22,12 @@ def user_details_container():
 
     while new_user in ["yes", 'y']:
         email, first, last, password = password_generator()
-        users_container[email] = {'email': email, 'first_name': first, 'last_name': last}
+        users_container[email] = {'email': email, 'first_name': first.title(), 'last_name': last.title()}
         print(password)
         choice = input("Do you like this password? [y/n]: ")
         while not choice.lower().replace(' ', '') in ['yes', 'y', 'no', 'n']:
             choice = input("please input a valid selection: ")
-        if choice.lower().replace(' ', '') in ['yes', 'y']: # the .replace to take care of accidental spaces
+        if choice.lower().replace(' ', '') in ['yes', 'y']:  # the .replace to take care of accidental spaces
             print('congratulation your account has been opened successfully')
             users_container[email]['password'] = password
 
