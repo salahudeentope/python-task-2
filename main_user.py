@@ -35,16 +35,20 @@ def user_details_container():
 
     while new_user in ["yes", 'y']:
         email, first, last, password = password_generator()
+
+        while email in users_container:
+            email = input('This email has been taken, please input a unique email: ')
+
         users_container[email] = {'email': email, 'first_name': first.title(), 'last_name': last.title()}
         print(password)
         choice = input("Do you like this password? [y/n]: ")
         while not choice.lower().replace(' ', '') in ['yes', 'y', 'no', 'n']:
             choice = input("please input a valid selection [y/n]: ")
         if choice.lower().replace(' ', '') in ['yes', 'y']:  # the .replace to take care of accidental spaces
-            print('congratulation your account has been opened successfully')
+            print('congratulation your details have been update successfully')
             users_container[email]['password'] = password
 
-            new_user = input("Do you have a new user to input? [y/n]: ")
+            new_user = input("Do you have another user to input? [y/n]: ")
 
             while not new_user.lower().replace(' ', '') in ['yes', 'y', 'no', 'n']:
                 new_user = input("please input a valid selection [y/n]: ")
@@ -55,10 +59,10 @@ def user_details_container():
             while len(new_choice) < 7:
                 new_choice = input("password length must be 7 or more characters: ")
                 continue
-            print('congratulation your account has been opened successfully')
-            users_container[email]['password'] = password
+            print('congratulation your details have been updated successfully')
+            users_container[email]['password'] = new_choice
 
-            new_user = input("Do you have a new user to input?[y/n]: ")
+            new_user = input("Do you have another user to input?[y/n]: ")
             while not new_user.lower().replace(' ', '') in ['yes', 'y', 'no', 'n']:
                 new_user = input("please input a valid selection [y/n]: ")
             new_user = new_user.lower().replace(' ', '')
