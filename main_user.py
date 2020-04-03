@@ -23,11 +23,15 @@ def password_generator():
 
 def user_details_container():
     """
-    Function to interactively collect and store users details in a container continously
+    1. Function to interactively collect and store users details in a container continously
     until terminated when the last user is inputed.
-    Users names are stored in a Title Case format.
 
-    accepted inputs from interactive questions are ['yes', 'y', 'no', 'n'].
+    2. Users names are stored in a Title Case format.
+
+    3. accepted inputs from interactive questions are ['yes', 'y', 'no', 'n'].
+
+    4. The users details are stored in a nested dictionary with the key as the users email.
+       This is to ensure that there aren't duplicate values.
 
     """
 
