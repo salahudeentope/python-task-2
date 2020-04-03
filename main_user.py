@@ -25,19 +25,17 @@ def user_details_container():
             new_user = new_user.lower()
             continue
         elif choice.lower() in ['no', 'n']:
-            while True:
-                new_choice = input("Kindly enter a password with 7 or more characters: ")
-                if len(new_choice) >= 7:
-                    users_container[email]['password'] = new_choice
-                    print('congratulation your account has been opened successfully')
+            new_choice = input("Kindly enter a password with 7 or more characters: ")
+            while len(new_choice) < 7:
+                new_choice = input("password length must be 7 or more characters: ")
+                continue
+            print('congratulation your account has been opened successfully')
+            users_container[email]['password'] = password
 
-                    # print(f'This is your account details {users[email]}')s
-                    break
-                elif len(new_choice) < 7:
-                    continue
-        new_user = input("Do you have a new user to input?[y/n]: ")
-        new_user = new_user.lower()
-        continue
+            new_user = input("Do you have a new user to input?[y/n]: ")
+            new_user = new_user.lower()
+            continue
+
     return users_container
 
 
