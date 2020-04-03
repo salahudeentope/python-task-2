@@ -27,9 +27,9 @@ def user_details_container():
             users_container[email]['password'] = password
 
             new_user = input("Do you have a new user to input?[y/n]: ")
-            new_user = new_user.lower()
+            new_user = new_user.lower().replace(' ', '')
             continue
-        elif choice.lower() in ['no', 'n']:
+        elif choice.lower().replace(' ', '') in ['no', 'n']:
             new_choice = input("Kindly enter a password with 7 or more characters: ")
             while len(new_choice) < 7:
                 new_choice = input("password length must be 7 or more characters: ")
@@ -38,7 +38,7 @@ def user_details_container():
             users_container[email]['password'] = password
 
             new_user = input("Do you have a new user to input?[y/n]: ")
-            new_user = new_user.lower()
+            new_user = new_user.lower().replace(' ', '')
             continue
 
     return users_container
