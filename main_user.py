@@ -22,11 +22,16 @@ def user_details_container():
         users_container[email] = {'email': email, 'first_name': first, 'last_name': last}
         print(password)
         choice = input("Do you like this password? [y/n]: ")
+        while not choice.lower().replace(' ', '') in ['yes', 'y', 'no', 'n']:
+            choice = input("please input a valid selection: ")
         if choice.lower().replace(' ', '') in ['yes', 'y']: # the .replace to take care of accidental spaces
             print('congratulation your account has been opened successfully')
             users_container[email]['password'] = password
 
             new_user = input("Do you have a new user to input?[y/n]: ")
+
+            while not new_user.lower().replace(' ', '') in ['yes', 'y', 'no', 'n']:
+                new_user = input("please input a valid selection: ")
             new_user = new_user.lower().replace(' ', '')
             continue
         elif choice.lower().replace(' ', '') in ['no', 'n']:
@@ -38,6 +43,8 @@ def user_details_container():
             users_container[email]['password'] = password
 
             new_user = input("Do you have a new user to input?[y/n]: ")
+            while not new_user.lower().replace(' ', '') in ['yes', 'y', 'no', 'n']:
+                new_user = input("please input a valid selection: ")
             new_user = new_user.lower().replace(' ', '')
             continue
 
