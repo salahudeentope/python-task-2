@@ -2,20 +2,25 @@ import random
 import string
 
 
+def password_generator():
+    email = input("Please enter your email: ")
+    first = input("Please enter your first name: ")
+    last = input('Please enter your last name: ')
+
+    letters = string.ascii_letters
+    random_string = "".join(random.sample(letters, 5))
+    password = first[0:2] + last[-2:] + random_string
+    return email, first, last, password
+
+
 def user_details_container():
     users_container = dict()
     new_user = "yes"
+
     while new_user in ["yes", 'y']:
-        email = input("Please enter your email: ")
-        first = input("Please enter your first name: ")
-        last = input('Please enter your last name: ')
+        email, first, last, password = password_generator()
         users_container[email] = {'email': email, 'first_name': first, 'last_name': last}
-
-        letters = string.ascii_letters
-        random_string = "".join(random.sample(letters, 5))
-        password = first[0:2] + last[-2:] + random_string
         print(password)
-
         choice = input("Do you like this password? [y/n]: ")
         if choice.lower().replace(' ', '') in ['yes', 'y']: # the .replace to take care of accidental spaces
             print('congratulation your account has been opened successfully')
