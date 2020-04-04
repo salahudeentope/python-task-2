@@ -8,11 +8,11 @@ def password_generator():
     a function to collect user inputs i.e email, first_name and last_name.
     It then automatically generates a password from the inputs.
     """
+    first = input("Please enter your first name: ")
+    last = input('Please enter your last name: ')
     email = input("Please enter your email: ")
     while not re.match("^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", email):  # regex to validate email
         email = input('please enter a valid email address: ')
-    first = input("Please enter your first name: ")
-    last = input('Please enter your last name: ')
 
     # the code below is used to generate a random 5-character string from ascii letters
     letters = string.ascii_letters
